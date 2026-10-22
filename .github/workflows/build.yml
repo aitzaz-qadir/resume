@@ -20,9 +20,9 @@ jobs:
           root_file: default.tex
       # Recruiter-friendly filename
       - run: mv default/default.pdf Aitzaz_Qadir_Resume.pdf
-      # Replace the single "resume" release so only one ever exists
+      # Overwrite the PDF in the single "resume" release; the tag never moves
       - env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          gh release delete resume --cleanup-tag --yes || true
-          gh release create resume Aitzaz_Qadir_Resume.pdf --title "Resume" --notes "Built from ${{ github.sha }}" --latest
+          gh release upload resume Aitzaz_Qadir_Resume.pdf --clobber
+          gh release edit resume --notes "Built from ${{ github.sha }}"
