@@ -1,0 +1,157 @@
+\documentclass[11pt, letterpaper]{article}
+
+% Packages:
+\usepackage[
+    ignoreheadfoot,
+    top=1.5 cm,
+    bottom=1.5 cm,
+    left=1.5 cm,
+    right=1.5 cm,
+    footskip=0.8 cm,]
+    {geometry}
+
+\usepackage[explicit]{titlesec}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage[dvipsnames]{xcolor}
+\definecolor{primaryColor}{RGB}{0, 79, 144}
+\usepackage{enumitem}
+\usepackage{fontawesome5}
+\usepackage{amsmath}
+
+\usepackage[
+    pdftitle={Aitzaz Qadir's Resume},
+    pdfauthor={Aitzaz Qadir},
+    colorlinks=true,
+    urlcolor=primaryColor]
+    {hyperref}
+
+\usepackage{lastpage}
+\usepackage{changepage}
+\usepackage{paracol}
+\usepackage{ifthen}
+\usepackage{needspace}
+\usepackage{iftex}
+
+% Ensure that generated PDF is ATS parsable:
+\ifPDFTeX
+    \input{glyphtounicode}
+    \pdfgentounicode=1
+    \usepackage[T1]{fontenc}
+    \usepackage[utf8]{inputenc}
+    \usepackage{lmodern}
+\fi
+
+\usepackage[default, type1]{sourcesanspro}
+
+% Formatting
+\pagestyle{empty}
+\setcounter{secnumdepth}{0}
+\setlength{\parindent}{0pt}
+\setlength{\topskip}{0pt}
+\setlength{\columnsep}{0.15cm}
+
+% Section Formatting
+\titleformat{\section}{
+    \needspace{4\baselineskip}
+    \Large\color{primaryColor}}{}{}
+    {\textbf{#1}\hspace{0.15cm}\titlerule[0.8pt]\hspace{-0.1cm}}[]
+
+\titlespacing{\section}{-1pt}{0.3 cm}{0.2 cm}
+
+% Custom Lists
+\newenvironment{highlights}{
+    \begin{itemize}[
+        topsep=0.10 cm,
+        parsep=0.10 cm,
+        partopsep=0pt,
+        itemsep=0pt,
+        leftmargin=0.4 cm]}
+        {\end{itemize}}
+
+% Game links: change \gamelinksfalse to \gamelinkstrue to make the game names clickable.
+% Before turning them on, swap the URLs below for the sanitized clones of each game.
+\newif\ifgamelinks
+\gamelinksfalse
+\newcommand{\game}[2]{\ifgamelinks\href{#2}{``#1''}\else``#1''\fi}
+
+% Icons are hidden from text extraction so ATS parsers don't read them as stray characters.
+\usepackage{accsupp}
+\newcommand{\icon}[1]{\BeginAccSupp{method=plain,ActualText={}}#1\EndAccSupp{}}
+
+\hyphenation{PostgreSQL TypeScript JavaScript}
+
+\begin{document}
+
+    % Heading & Contact Information
+    \begin{center}
+        {\fontsize{20pt}{20pt}\textbf{Aitzaz Qadir}}\\
+        \vspace{0.2 cm}
+        \href{https://www.linkedin.com/in/aitzaz-qadir/}{\icon{\faLinkedin}\ linkedin.com/in/aitzaz-qadir} \textbar{} 
+        \href{mailto:aitzazqk@gmail.com}{\icon{\faEnvelope}\ aitzazqk@gmail.com} \textbar{} 
+        \icon{\faPhone}\ 902-989-0499 \textbar{} 
+        \icon{\faMapMarker}\ Halifax, Nova Scotia
+    \end{center}
+
+    % Skills Section
+    \section{Technical Skills}
+    \begin{highlights}
+        \item \textbf{Languages:} Java, JavaScript, TypeScript, Python, C, C++, C\#, Kotlin, R, SQL, HTML/CSS
+        \item \textbf{Frameworks \& Tools:} React, Node.js, Spring Boot, Firebase, Tailwind, Vite, Netlify, Git, Docker, Linux, MySQL, PostgreSQL, Unity, Android Studio, JIRA
+        \item \textbf{Health IT \& Business:} Oracle Health (Cerner) PowerChart, Microsoft Excel, Power Apps, SharePoint, Documentation
+    \end{highlights}
+
+    % Education Section
+    \section{Education}
+    \textbf{Bachelor of Computer Science – Dalhousie University (Class of 2024)}
+    \vspace{0.5mm}\\
+    \textit{Halifax, Nova Scotia | Jan 2020 – May 2024, Cumulative GPA: 3.84}
+    \begin{highlights}
+        \item Sexton Scholar (4x), Dean’s List, and 2022 Hector McInnes Memorial Scholarship recipient
+        \item Residence Assistant, Dalhousie ResLife (Sept 2021 – Apr 2022): front-line support for residents, incident documentation and reporting, and coordination with university staff
+    \end{highlights}
+
+    % Work Section
+    \section{Work Experience}
+
+    \textbf{Nova Scotia Health – OPOR (Oracle Health EHR Rollout)} \hfill Current Role
+    \vspace{0.5mm}\\
+    \textit{Halifax, Nova Scotia | Fixed-Term Contract | Feb 2026 – Present}
+
+    \vspace{1mm}
+    \textbf{Intern Support Consultant, At-the-Elbow (ATE) Support} \hfill \textit{Feb 2026 – Apr 2026}
+    \begin{highlights}
+        \item Trained in Oracle Health PowerChart provider workflows and clinical terminology; provided at-the-elbow support.
+        \item Facilitated in-person Oracle Health PowerChart training for nurses, providers and pharmacists, guiding participants through clinical workflows, system navigation and troubleshooting ahead of Go-Live 2.
+    \end{highlights}
+
+    \textbf{Intern Support Consultant, D\&O Support Squad} \hfill \textit{Apr 2026 – Present}
+    \begin{highlights}
+        \item Updated the \game{Cutover Countdown}{https://example.com} training game with clinical leads, reworking answer logic and adding clinical-area rounds with per-answer explanations.
+        \item Designed and led development of \game{Charts, Please!}{https://example.com}, a gamified cutover simulation for nurses (React, TypeScript, Firebase); reached nearly 300 users who processed nearly 700 patient charts, averaging 6+ minutes of engagement.
+        \item Developed \game{Master Aldric's Labyrinth}{https://example.com}, a cutover training game for pharmacists, consolidating the codebase and embedding job aids in-game; 45 users completed 270+ workflows, averaging 11 minutes of engagement.
+        \item Helped build a Power App for nurses' cutover questions, designing its ticket dashboard UI and annotated job aid.
+        \item Built a master Excel dashboard consolidating 38 linked tracker files across 3 health zones, tracking cutover of nearly 8,000 patient charts for leadership and nearly 40 clinic managers.
+        \item Supported on-site clinical cutover for Go-Live 2 and Go-Live 3, including resolving staff support tickets.
+    \end{highlights}
+
+    \textbf{Content Bloom – Junior Web Development Consultant} \hfill Co-op Term, Dalhousie
+    \vspace{0.5mm}\\
+    \textit{Halifax, Nova Scotia | Sept 2021 – Dec 2021}
+    \begin{highlights}
+        \item Diagnosed and documented 1,300+ accessibility compliance issues across 15+ enterprise web systems, maintaining structured records for remediation and audit tracking.
+        \item Investigated root causes of system errors and worked with developers and QA to validate fixes for WCAG compliance.
+        \item Designed and implemented 12+ interactive PDF and HTML forms using JavaScript and Adobe LiveCycle Designer, reducing user input errors by 60\%.
+    \end{highlights}
+
+    % Project Section
+    \section{Projects}
+
+    \textbf{Personal Portfolio Website (In Progress)} \hfill \textit{React, Tailwind CSS, Node.js} 
+    \textbar{} \href{https://aitzaz-portfolio.netlify.app/}{Live Demo}
+    \textbar{} \href{https://github.com/aitzaz-qadir/portfolio-website}{Source Code}
+    \begin{highlights}
+        \item Responsive portfolio site serving as a visual companion to this resume, being updated with recent work.
+    \end{highlights}
+
+\end{document}

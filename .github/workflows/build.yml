@@ -1,0 +1,26 @@
+name: Build resume
+
+on:
+  push:
+    branches: [main]
+    paths: ['main.tex', '.github/workflows/**']
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: xu-cheng/latex-action@v3
+        with:
+          root_file: main.tex
+      # Recruiter-friendly filename
+      - run: mv main.pdf Aitzaz_Qadir_Resume.pdf
+      - uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v${{ github.run_number }}
+          name: Resume v${{ github.run_number }}
+          files: Aitzaz_Qadir_Resume.pdf
