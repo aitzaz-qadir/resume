@@ -32,8 +32,9 @@ $RECYCLE.BIN/
 ### Build output (the Action builds the PDF)
 *.pdf
 
-### Tailored resumes (local only, never published)
+### Tailored resumes and cover letters (local only, never published)
 tailored/
+cover-letters/
 
 ### Claude
 .claude/
